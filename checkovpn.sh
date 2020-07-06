@@ -9,7 +9,7 @@ checkcmd=`pgrep openvpn`
 pubip=`curl https://www.ovpn.com/v2/api/client/ptr 2>/dev/null | cut -d '"' -f 6| awk '{print $1}'`
 
 if [ $pubip !=  "ValidationException" ]; then
-        echo "OVPN is up and running :)"
+        echo "[$DATE] OVPN is up and running :)" >> $LOG
 else
         echo "[$DATE] Restarting daemon" >> $LOG
         kill -3 $checkcmd 2>/dev/null
